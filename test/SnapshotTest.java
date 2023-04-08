@@ -46,10 +46,14 @@ public class SnapshotTest {
    */
   @Test
   public void testGetId() {
-    shot1.getId();
+    assertEquals("Snapshot ID: " + shot1.getId() + "\n"
+            + "Timestamp: " + shot1.getTimeStamp() + "\n" + "Description: After first selfie\n"
+            +  "Shape Information:\n" +  "Name: R\n" + "Type: rectangle\n"
+            + "Min corner: (200.0,200.0), Width: 50.0, Height: 100.0, Color: (1.0,0.0,0.0)\n"
+            + "\n" + "Name: O\n" + "Type: oval\n"
+            + "Center: (500.0,100.0), X radius: 60.0, Y radius: 30.0, "
+            +  "Color: (0.0,0.0,1.0)", shot1.toString());
     System.out.println(shot1.getId());
-    //consider time.now for expected
-    //assertEquals("2023-04-05T10:52:54.000054", shot1.getId());
   }
 
 
@@ -58,11 +62,17 @@ public class SnapshotTest {
    */
   @Test
   public void testGetTimeStamp() {
+    assertEquals("Snapshot ID: " + shot1.getId() + "\n"
+            + "Timestamp: " + shot1.getTimeStamp() + "\n" + "Description: After first selfie\n"
+            +  "Shape Information:\n" +  "Name: R\n" + "Type: rectangle\n"
+            + "Min corner: (200.0,200.0), Width: 50.0, Height: 100.0, Color: (1.0,0.0,0.0)\n"
+            + "\n" + "Name: O\n" + "Type: oval\n"
+            + "Center: (500.0,100.0), X radius: 60.0, Y radius: 30.0, "
+            +  "Color: (0.0,0.0,1.0)", shot1.toString());
     System.out.println(shot1.getTimeStamp());
     shot1.getTimeStamp();
 
-    //use .of
-    //assertEquals("05-04-2023 11:02:37", shot1.getTimeStamp());
+
   }
 
   /**
@@ -78,17 +88,17 @@ public class SnapshotTest {
    */
   @Test
   public void testToString() {
-    System.out.println(shot1.toString());
-    /*
-    assertEquals("Snapshot ID: 2022-03-30T11:51:02.174193\n"
-            + "Timestamp: 30-03-2022 11:51:02\n" + "Description: After first selfie\n"
+
+
+    assertEquals("Snapshot ID: " + shot1.getId() + "\n"
+            + "Timestamp: " + shot1.getTimeStamp() + "\n" + "Description: After first selfie\n"
             +  "Shape Information:\n" +  "Name: R\n" + "Type: rectangle\n"
             + "Min corner: (200.0,200.0), Width: 50.0, Height: 100.0, Color: (1.0,0.0,0.0)\n"
             + "\n" + "Name: O\n" + "Type: oval\n"
             + "Center: (500.0,100.0), X radius: 60.0, Y radius: 30.0, "
             +  "Color: (0.0,0.0,1.0)", shot1.toString());
 
-     */
+
   }
 
 }

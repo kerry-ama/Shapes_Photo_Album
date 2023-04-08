@@ -57,15 +57,7 @@ public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registrat
     return null;
   }
 
-  //***PROBABLY GET RID OF**
-  public Snapshot takeSnapshot(String description, List<IShape> shapes) {
-    SimpleDateFormat id = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.ssssss");
-    SimpleDateFormat timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-    //set date time
-    java.sql.Timestamp time = new Timestamp(System.currentTimeMillis());
-    //potentially add Snapshot
-    return new Snapshot(description, shapes, id, timeStamp.format(time));
-  }
+
 
   /**
    * Takes a snapshot of this PhotoAlbum model.
@@ -192,7 +184,7 @@ public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registrat
    * Resets the listOfSnapshots to a new array.
    */
   public void reset() {
-    this.listOfSnapshots = new ArrayList<>();
+    this.listOfSnapshots = new LinkedList<>();
   }
 
   /**
