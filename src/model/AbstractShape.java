@@ -11,8 +11,6 @@ public class AbstractShape implements IShape {
   private String name; //will be input from user
   private Point2D position;
   private Color color;
-  private double x; //can delete
-  private double y; //can delete
   private double horizontal;
   private double vertical;
 
@@ -28,8 +26,6 @@ public class AbstractShape implements IShape {
   public AbstractShape(String name, double x, double y, Color color) {
     //delete x and y include Point2D
     this.name = name;
-    this.x = x;
-    this.y = y;
     this.position = new Point2D(x, y);
     this.color = color;
 
