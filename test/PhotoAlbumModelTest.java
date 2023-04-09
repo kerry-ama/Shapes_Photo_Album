@@ -7,10 +7,10 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
+
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
 
 /**
  * Tests the methods of the PhotoAlbumModel class.
@@ -180,6 +180,24 @@ public class PhotoAlbumModelTest {
   }
 
   /**
+   * Tests the getShapeIds method.
+   */
+  @Test
+  public void testGetShapeIds() {
+    Snapshot shot1 = model2.takeSnapshot("snap1");
+    model2.addSnapshot(shot1);
+    System.out.println(model2.getSnapshotIds());
+  }
+
+  /**
+   * Tests the getListOfShapes
+   */
+  @Test
+  public void testGetListOfShapes() {
+    System.out.println(model2.getListOfShapes());
+  }
+
+  /**
    * Tests the removeShape method.
    */
   @Test
@@ -272,6 +290,11 @@ public class PhotoAlbumModelTest {
             + "Shape Information:\n" + "Name: O\n" + "Type: oval\n"
             + "Center: (200.0,200.0), X radius: 50.0, "
             + "Y radius: 100.0, Color: (1.0,0.0,0.0)\n\n\n", model2.toString());
+  }
+
+  @Test
+  public void testShapes() {
+
   }
 
   /**

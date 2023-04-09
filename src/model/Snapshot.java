@@ -2,11 +2,9 @@ package model;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
+
 
 /**
  * A Snapshot implements all the methods mandated by the
@@ -23,14 +21,6 @@ public class Snapshot implements ISnapshot {
   private String timeStamp;
 
 
-  /*
-  private final SimpleDateFormat id
-          = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.ssssss");
-  private final SimpleDateFormat timeStamp
-          = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-  */
-  //ASK: TA should I add/remove shape?
-  //could consider passing in id as a String
 
   /**
    * Constructs a Snapshot object.

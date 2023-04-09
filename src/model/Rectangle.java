@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Objects;
 
 /**
  * A Rectangle object extends all the methods
@@ -11,7 +10,7 @@ public class Rectangle extends AbstractShape {
 
   private double width;
   private double height;
-  private static final String TYPE = "rectangle"; //should this be an enum
+  private static final String TYPE = "rectangle";
 
   /**
    * Constructs a Rectangle object instance.
@@ -22,9 +21,12 @@ public class Rectangle extends AbstractShape {
    * @param width a double representing the width of this Rectangle.
    * @param height a double representing the height of this Rectangle
    */
-  //ASK TA: should I add type to constructor???
-  public Rectangle(String name, double x, double y, Color color, double width, double height) {
+  public Rectangle(String name, double x, double y, Color color,
+                   double width, double height) throws IllegalArgumentException {
     super(name, x, y, color);
+    if (width <= 0 || height <= 0) {
+      throw new IllegalArgumentException("Invalid height and/or width");
+    }
     this.height = height;
     this.width = width;
   }
@@ -40,6 +42,9 @@ public class Rectangle extends AbstractShape {
    */
   public Rectangle(String name, Point2D position, Color color, double width, double height) {
     super(name, position, color);
+    if (width <= 0 || height <= 0) {
+      throw new IllegalArgumentException("Invalid height and/or width");
+    }
     this.width = width;
     this.height = height;
 
@@ -73,7 +78,11 @@ public class Rectangle extends AbstractShape {
    *                   of this Rectangle
    */
   @Override
-  public void changeSize(double newWidth, double newHeight) {
+  public void changeSize(double newWidth, double newHeight)
+          throws IllegalArgumentException {
+    if (newWidth <= 0 || newHeight <= 0) {
+      throw new IllegalArgumentException("Invalid newWidth and/or newHeight");
+    }
     this.width = newWidth;
     this.height = newHeight;
 

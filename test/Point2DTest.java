@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class Point2DTest {
   private Point2D point1;
+  private Point2D point2;
 
   /**
    * Creates Point2D object instances.
@@ -16,6 +17,7 @@ public class Point2DTest {
   @Before
   public void setUp() {
     point1 = new Point2D(100, 300);
+    point2 = new Point2D(-100, -50);
 
   }
 
@@ -24,7 +26,9 @@ public class Point2DTest {
    */
   @Test
   public void testGetX() {
+
     assertEquals(100, point1.getX(), 0.001);
+    assertEquals(-100, point2.getX(), 0.001);
   }
 
   /**
@@ -32,7 +36,9 @@ public class Point2DTest {
    */
   @Test
   public void testGetY() {
+
     assertEquals(300, point1.getY(), 0.001 );
+    assertEquals(-50, point2.getY(), 0.001);
   }
 
   /**
@@ -40,6 +46,8 @@ public class Point2DTest {
    */
   @Test
   public void testToString() {
+
     assertEquals("(100.0,300.0)", point1.toString());
+    assertEquals("(-100.0,-50.0)", point2.toString());
   }
 }

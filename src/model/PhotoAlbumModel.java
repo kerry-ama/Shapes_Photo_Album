@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Stream;
 
 /**
  * A PhotoAlbumModel implements all the methods mandated by the
@@ -186,6 +187,29 @@ public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registrat
   public void reset() {
     this.listOfSnapshots = new LinkedList<>();
   }
+
+  /**
+   * Getter method that returns this
+   * PhotoAlbumModel's list of shapes.
+   * @return a list containing IShape objects.
+   */
+  public List<IShape> getListOfShapes() {
+    return this.listOfIShapes;
+  }
+
+  /**
+   * Getter method that returns a list containing
+   * the Ids of each snapshot in a list.
+   * @return a list of Strings containing the all the snapshot ids
+   */
+  public List<String> getSnapshotIds() {
+    List<String> strings = new ArrayList<>();
+    for (Snapshot shot: this.listOfSnapshots) {
+      strings.add(shot.getId());
+    }
+    return strings;
+  }
+
 
   /**
    * Returns a String representation of the PhotoAlbumModel in the

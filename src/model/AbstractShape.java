@@ -65,12 +65,6 @@ public class AbstractShape implements IShape {
     return this.color;
   }
 
-  //ASK TA: which one to use for changeColor
- // public void changeColor(int red, int green, int blue) {
-   // this.color = new Color(red, green, blue);
-  //}
-
-  //change to void
 
   /**
    * Moves the AbstractShape to a different cartesian point.

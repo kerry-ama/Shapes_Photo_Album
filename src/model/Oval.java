@@ -22,6 +22,9 @@ public class Oval extends AbstractShape {
    */
   public Oval(String name, double x, double y, Color color, double radiusX, double radiusY) {
     super(name, x, y, color);
+    if (radiusX <= 0 || radiusY <= 0) {
+      throw new IllegalArgumentException("Invalid radiusX and/or radiusY");
+    }
     this.radiusX = radiusX;
     this.radiusY = radiusY;
   }
@@ -35,8 +38,12 @@ public class Oval extends AbstractShape {
    * @param radiusX a double representing the width of this Rectangle.
    * @param radiusY a double representing the height of this Rectangle
    */
-  public Oval(String name, Point2D position, Color color, double radiusX, double radiusY) {
+  public Oval(String name, Point2D position, Color color, double radiusX, double radiusY)
+          throws IllegalArgumentException {
     super(name, position, color);
+    if (radiusX <= 0 || radiusY <= 0) {
+      throw new IllegalArgumentException("Invalid radiusX and/or radiusY");
+    }
     this.radiusX = radiusX;
     this.radiusY = radiusY;
 
@@ -49,6 +56,7 @@ public class Oval extends AbstractShape {
    * @return a double representing the value
    *         of this Oval's horizontal/x-axis radius
    */
+
   public double getRadiusX() {
     return this.radiusX;
   }
@@ -71,10 +79,17 @@ public class Oval extends AbstractShape {
    *                   of this Oval
    */
   @Override
-  public void changeSize(double newRadiusX, double newRadiusY) {
+  public void changeSize(double newRadiusX, double newRadiusY)
+          throws IllegalArgumentException {
+    if (newRadiusX <= 0 || newRadiusY <= 0) {
+      throw new IllegalArgumentException("Invalid newRadiusX and/or newRadiusY");
+    }
     this.radiusX = newRadiusX;
     this.radiusY = newRadiusY;
   }
+
+
+
 
   /**
    * Returns a String representation of this Oval in the form:
