@@ -14,20 +14,33 @@ public class AbstractShape implements IShape {
   private double horizontal;
   private double vertical;
 
-  //potentially add dimension1 and dimension2
+
 
   /**
    * Displays the constructor of an AbstractShape
    * @param name a String representing the name of the shape
-   * @param x
-   * @param y
-   * @param color
+   * @param x a double representing the x_coordinate position
+   *          of this IShape.
+   * @param y a double representing the y_coordinate of this
+   *          IShape.
+   * @param color a Color object representing the color of this
+   *              IShape.
+   * @param horizontal a double representing the horizontal
+   *                   dimension of this IShape
+   * @param vertical a double representing the vertical
+   *                 dimension of this IShape
    */
-  public AbstractShape(String name, double x, double y, Color color) {
-    //delete x and y include Point2D
+  public AbstractShape(String name, double x, double y, Color color,
+                       double horizontal, double vertical) {
+    if (horizontal <= 0 || vertical <= 0) {
+      throw new IllegalArgumentException("Invalid height and/or width");
+    }
+
     this.name = name;
     this.position = new Point2D(x, y);
     this.color = color;
+    this.horizontal = horizontal;
+    this.vertical = vertical;
 
   }
 
@@ -37,11 +50,20 @@ public class AbstractShape implements IShape {
    * @param position a Point2D object representing the position in a cartesian
    *                 graph
    * @param color a Color object representing the color of the AbstractShape
+   * @param horizontal a double representing the horizontal
+   *                   dimension of this IShape
+   * @param vertical a double representing the vertical
+   *                 dimension of this IShape
    */
-  public AbstractShape(String name, Point2D position, Color color) {
+  public AbstractShape(String name, Point2D position, Color color, double horizontal, double vertical) {
+    if (horizontal <= 0 || vertical <= 0) {
+      throw new IllegalArgumentException("Invalid height and/or width");
+    }
     this.name = name;
     this.position = position;
     this.color = color;
+    this.horizontal = horizontal;
+    this.vertical = vertical;
 
   }
 
@@ -59,6 +81,12 @@ public class AbstractShape implements IShape {
    * @return the AbstractShape's new color.
    */
 
+  /**
+   * Changes the color of the IShape to a newColor.
+   * @param newColor the desired color change of this
+   *                 IShape.
+   * @return a Color object
+   */
   @Override
   public Color changeColor(Color newColor) {
     this.color = newColor;
@@ -98,9 +126,37 @@ public class AbstractShape implements IShape {
    */
   @Override
   public void changeSize(double horizontal, double vertical) {
+    if (horizontal <= 0 || vertical <= 0) {
+      throw new IllegalArgumentException("Invalid newRadiusX and/or newRadiusY");
+    }
     this.horizontal = horizontal;
     this.vertical = vertical;
   }
+
+
+  /**
+   * Getter method that returns this IShape's
+   * horizontal dimension.
+   * @return a double representing the IShape's
+   *         horizontal dimension.
+   */
+  @Override
+  public double getHorizontal() {
+    return this.horizontal;
+  }
+
+  /**
+   * Getter method that returns this IShape's
+   * vertical dimension.
+   * @return a double representing the IShape's
+   *         vertical dimension.
+   */
+  @Override
+  public double getVertical() {
+    return this.vertical;
+  }
+
+
 
   /**
    * A getter method that returns this AbstractShape's
@@ -120,5 +176,14 @@ public class AbstractShape implements IShape {
    */
   public String getName() {
     return this.name;
+  }
+
+  /**
+   * A getter method representing this AbstractShape's
+   * type.
+   * @return a String representing this AbstractShape's name.
+   */
+  public String getType() {
+    return null;
   }
 }

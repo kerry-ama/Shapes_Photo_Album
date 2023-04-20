@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 /**
  * Represents the current state of a screen. Classes that
  * implement ISnapshot should be able to get the object's id,
@@ -37,4 +39,11 @@ public interface ISnapshot {
    * @return a String representation of this PhotoAlbumModel
    */
   String toString();
+
+
+  /**
+   * Returns a list of this Snapshot's shape's.
+   * @return a list of IShape shapes.
+   */
+  List<IShape> getListOfShapes();
 }

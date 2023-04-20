@@ -8,8 +8,7 @@ package model;
  */
 public class Rectangle extends AbstractShape {
 
-  private double width;
-  private double height;
+  private String name;
   private static final String TYPE = "rectangle";
 
   /**
@@ -23,12 +22,9 @@ public class Rectangle extends AbstractShape {
    */
   public Rectangle(String name, double x, double y, Color color,
                    double width, double height) throws IllegalArgumentException {
-    super(name, x, y, color);
-    if (width <= 0 || height <= 0) {
-      throw new IllegalArgumentException("Invalid height and/or width");
-    }
-    this.height = height;
-    this.width = width;
+    super(name, x, y, color, width, height);
+    this.name = name;
+
   }
 
   /**
@@ -41,51 +37,30 @@ public class Rectangle extends AbstractShape {
    * @param height a double representing the height of this Rectangle
    */
   public Rectangle(String name, Point2D position, Color color, double width, double height) {
-    super(name, position, color);
-    if (width <= 0 || height <= 0) {
-      throw new IllegalArgumentException("Invalid height and/or width");
-    }
-    this.width = width;
-    this.height = height;
+    super(name, position, color, width, height);
+    this.name = name;
+
 
   }
 
   /**
-   * Returns a double representing the width
-   * of the Rectangle.
-   * @return a double representing the width of
-   *    the Rectangle.
+   * A getter method that returns this Oval's
+   * type.
+   * @return a String representing the type of this
+   *         IShape.
    */
-  public double getWidth() {
-    return this.width;
+  public String getType() {
+    return this.TYPE;
   }
 
   /**
-   * Returns a double representing the height
-   * of the Rectangle.
-   * @return a double representing the height
-   *         of the Rectangle.
+   * Returns a String representation of this
+   * IShape's name.
+   * @return a String representing the name of
+   *         this IShape.
    */
-  public double getHeight() {
-    return this.height;
-  }
-
-  /**
-   * Changes the size of this Rectangle.
-   * @param newWidth a double representing the Rectangle's new radiusX
-   *                   of this Rectangle
-   * @param newHeight a double representing the Rectangle's new radiusY
-   *                   of this Rectangle
-   */
-  @Override
-  public void changeSize(double newWidth, double newHeight)
-          throws IllegalArgumentException {
-    if (newWidth <= 0 || newHeight <= 0) {
-      throw new IllegalArgumentException("Invalid newWidth and/or newHeight");
-    }
-    this.width = newWidth;
-    this.height = newHeight;
-
+  public String getName() {
+    return this.name;
   }
 
   /**
@@ -100,8 +75,8 @@ public class Rectangle extends AbstractShape {
     return  "Name: " + this.getName() + "\n"
             + "Type: " + this.TYPE + "\n"
             + "Min corner: " +  this.getPosition().toString() + ", "
-            + "Width: " + this.width + ", "
-            + "Height: " + this.height + ", " + "Color: "
+            + "Width: " + this.getHorizontal() + ", "
+            + "Height: " + this.getVertical() + ", " + "Color: "
             + this.getColor().toString();
   }
 

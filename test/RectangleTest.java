@@ -29,7 +29,7 @@ public class RectangleTest {
     Color color1 = new Color(1, 0, 0);
     Point2D point1 = new Point2D(200.0, 200.0);
     Rectangle r = new Rectangle("R", point1, color1, 0, 20);
-    assertEquals(0, r.getWidth(), 0.001);
+    assertEquals(0, r.getHorizontal(), 0.001);
     Rectangle r2 = new Rectangle("R2", 3, 3, color1, -100, -30);
   }
 
@@ -38,9 +38,10 @@ public class RectangleTest {
    */
   @Test
   public void testGetWidth() {
+    //System.out.println(rectangle1.getHorizontal());
 
-    assertEquals(50.0, rectangle1.getWidth(), 0.001);
-    assertEquals(1, rectangle2.getWidth(), 0.001);
+    assertEquals(50.0, rectangle1.getHorizontal(), 0.001);
+    assertEquals(1, rectangle2.getHorizontal(), 0.001);
   }
 
   /**
@@ -49,8 +50,8 @@ public class RectangleTest {
   @Test
   public void testGetHeight() {
 
-    assertEquals(100.0, rectangle1.getHeight(), 0.001);
-    assertEquals(0.6, rectangle2.getHeight(), 0.001);
+    assertEquals(100.0, rectangle1.getVertical(), 0.001);
+    assertEquals(0.6, rectangle2.getVertical(), 0.001);
   }
 
   /**
@@ -60,10 +61,10 @@ public class RectangleTest {
   public void testChangeSize() {
     rectangle1.changeSize(25,100.0);
     rectangle2.changeSize(9000, 893);
-    assertEquals(25.0, rectangle1.getWidth(), 0.001);
-    assertEquals(100.0, rectangle1.getHeight(), 0.001);
-    assertEquals(9000, rectangle2.getWidth(), 0.001);
-    assertEquals(893, rectangle2.getHeight(), 0.001);
+    assertEquals(25.0, rectangle1.getHorizontal(), 0.001);
+    assertEquals(100.0, rectangle1.getVertical(), 0.001);
+    assertEquals(9000, rectangle2.getHorizontal(), 0.001);
+    assertEquals(893, rectangle2.getVertical(), 0.001);
   }
 
   /**
@@ -75,8 +76,8 @@ public class RectangleTest {
     Color c2 = new Color(255, 255, 255);
     rectangle1.changeColor(newColor);
     rectangle2.changeColor(c2);
-    assertEquals("(0.0,1.0,0.0)", rectangle1.getColor().toString());
-    assertEquals("(255.0,255.0,255.0)", rectangle2.getColor().toString());
+    assertEquals("(0,1,0)", rectangle1.getColor().toString());
+    assertEquals("(255,255,255)", rectangle2.getColor().toString());
   }
 
   /**
@@ -107,9 +108,9 @@ public class RectangleTest {
   public void testToString() {
     assertEquals("Name: R\nType: rectangle\n"
             + "Min corner: (200.0,200.0), Width: 50.0, "
-            + "Height: 100.0, Color: (1.0,0.0,0.0)", rectangle1.toString());
+            + "Height: 100.0, Color: (1,0,0)", rectangle1.toString());
     assertEquals("Name: R2\n" + "Type: rectangle\n" + "Min corner: (45.0,-20.0), "
-            + "Width: 1.0, Height: 0.6, Color: (1.0,0.0,0.0)", rectangle2.toString());
+            + "Width: 1.0, Height: 0.6, Color: (1,0,0)", rectangle2.toString());
   }
 
 }

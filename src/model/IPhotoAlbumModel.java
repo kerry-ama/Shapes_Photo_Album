@@ -34,6 +34,13 @@ public interface IPhotoAlbumModel {
   Snapshot takeSnapshot(String description);
 
   /**
+   * Takes a snapshot of this PhotoAlbumModel.
+   * @return a Snapshot object of the current state of
+   *         this PhotoAlbumModel
+   */
+  Snapshot takeSnapshot();
+
+  /**
    * Adds a Snapshot object to the list array 'listOfSnapshots.'
    * @param newSnapshot a Snapshot object
    */
@@ -102,6 +109,12 @@ public interface IPhotoAlbumModel {
    * Resets the listOfSnapshots to a new array.
    */
   void reset();
+
+  /**
+   * Returns a list of this PhotoAlbumModel's Snapshots.
+   * @return a list of Snapshot objects
+   */
+  List<Snapshot> getListOfSnapshots();
 
   /**
    * Returns a String representation of the PhotoAlbumModel in the

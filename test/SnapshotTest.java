@@ -38,7 +38,8 @@ public class SnapshotTest {
             = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     java.sql.Timestamp time = new Timestamp(System.currentTimeMillis());
 
-    shot1 = new Snapshot("After first selfie", listofshapes, id, timeStamp.format(time));
+    //shot1 = new Snapshot("After first selfie", listofshapes, id.format(time), timeStamp.format(time));
+    shot1 = new Snapshot("After first selfie", listofshapes, id.format(time), java.time.LocalDateTime.now().toString());
   }
 
   /**

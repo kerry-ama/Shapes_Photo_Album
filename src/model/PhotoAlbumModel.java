@@ -3,11 +3,9 @@ package model;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Stream;
+
+import java.util.*;
+
 
 /**
  * A PhotoAlbumModel implements all the methods mandated by the
@@ -18,8 +16,8 @@ import java.util.stream.Stream;
  * from its list, move shapes, resize shapes, and be represented
  * as a String.
  */
-public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registration system
-  private List<IShape> listOfIShapes; //canvas, current
+public class PhotoAlbumModel implements IPhotoAlbumModel {
+  private List<IShape> listOfIShapes;
   private List<Snapshot> listOfSnapshots; //historical
 
 
@@ -29,7 +27,6 @@ public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registrat
    */
   public PhotoAlbumModel() {
     this.listOfIShapes = new LinkedList<>();
-    //this.listOfSnapshots = new ArrayList<>(); //preserve order (consider chaning to a linkedlist)
     this.listOfSnapshots = new LinkedList<>();
   }
 
@@ -69,9 +66,37 @@ public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registrat
     SimpleDateFormat id = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.ssssss");
     SimpleDateFormat timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     java.sql.Timestamp time = new Timestamp(System.currentTimeMillis());
-    List<IShape> shapeList = this.listOfIShapes;
 
-    return new Snapshot(description, shapeList, id, timeStamp.format(time));
+    List<IShape> shapeListCopy = new ArrayList<>();
+    shapeListCopy.addAll(listOfIShapes); //need to make a copy of shapelist
+
+
+    Date date = new Date();
+    String time2 = java.time.LocalDateTime.now().toString();
+
+    return new Snapshot(description, shapeListCopy, time2, timeStamp.format(time));
+  }
+
+
+  /**
+   * Takes a snapshot of this PhotoAlbumModel.
+   * @return a Snapshot object of the current state of this
+   *         PhotoAlbumModel.
+   */
+  public Snapshot takeSnapshot() {
+    SimpleDateFormat id = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.ssssss");
+    SimpleDateFormat timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    java.sql.Timestamp time = new Timestamp(System.currentTimeMillis());
+    //java.time.LocalDateTime.now()
+    List<IShape> shapeListCopy = new ArrayList<>(); //new
+    shapeListCopy.addAll(listOfIShapes); //new
+    List<IShape> shapeList = this.listOfIShapes;
+    //java.time.LocalDateTime.now()
+    Date date = new Date();
+    String time2 = java.time.LocalDateTime.now().toString();
+
+
+    return new Snapshot(shapeListCopy, time2, timeStamp.format(time));
   }
 
   /**
@@ -132,6 +157,48 @@ public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registrat
         shape.move(x, y); //could change to Point2D
       }
     }
+
+    IShape modified = null;
+    int indexToDelete = 0;
+    for (int i = 0; i < this.listOfIShapes.size(); i++) {
+      if(this.listOfIShapes.get(i).getName().equalsIgnoreCase(name)) {
+        if (this.listOfIShapes.get(i).getType().equalsIgnoreCase("oval")) {
+          modified = new Oval(listOfIShapes.get(i).getName(), x, y, listOfIShapes.get(i).getColor(),
+                  listOfIShapes.get(i).getHorizontal(), listOfIShapes.get(i).getVertical());
+          indexToDelete = i;
+        }
+        if (this.listOfIShapes.get(i).getType().equalsIgnoreCase("rectangle")) {
+          modified = new Rectangle(listOfIShapes.get(i).getName(), x, y, listOfIShapes.get(i).getColor(),
+                  listOfIShapes.get(i).getHorizontal(), listOfIShapes.get(i).getVertical());
+          indexToDelete = i;
+        }
+        this.listOfIShapes.get(i).move(x, y); //could change to Point2D
+      }
+    }
+    this.listOfIShapes.set(indexToDelete, modified);
+
+
+
+
+  }
+
+  /**
+   * Changes the Color of a specific shape with a given name
+   * in the model.
+   * @param name a String representing the name of the IShape
+   * @param red an integer representing the desired amount of red
+   *            in the shape's color between 0 and 255
+   * @param green an integer representing the desired amount of green
+   *    *         in the shape's color between 0 and 255
+   * @param blue an integer representing the desired amount of blue
+   *    *        in the shape's color between 0 and 255
+   */
+  public void changeShapeColor(String name, int red, int green, int blue) {
+    for (IShape shape: this.listOfIShapes) {
+      if (shape.getName().equalsIgnoreCase(name)) {
+        shape.changeColor(new Color(red, green, blue));
+      }
+    }
   }
 
   /**
@@ -142,6 +209,7 @@ public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registrat
    *                    the new position on a cartesian plane of the
    *                    new object.
    */
+  @Override
   public void moveShape(String name, Point2D newPosition) { //keep both
     for (IShape shape: this.listOfIShapes) {
       if(shape.getName().equalsIgnoreCase(name)) {
@@ -174,11 +242,31 @@ public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registrat
    *                 dimension of a shape
    */
   public void reSizeShape(String name, double horizontal, double vertical) {
-    for (IShape shape: this.listOfIShapes) {
-      if (shape.getName().equalsIgnoreCase(name)) {
-        shape.changeSize(horizontal, vertical);
+
+    IShape modified = null;
+    int indexToDelete = 0;
+    for (int i = 0; i < this.listOfIShapes.size(); i++) {
+      System.out.println("size of list of shapes");
+      System.out.println(listOfIShapes.size());
+      System.out.println(listOfIShapes);
+
+      if(this.listOfIShapes.get(i).getName().equalsIgnoreCase(name)) {
+        if (this.listOfIShapes.get(i).getType().equalsIgnoreCase("oval")) {
+          modified = new Oval(listOfIShapes.get(i).getName(), listOfIShapes.get(i).getPosition().getX(),
+                  listOfIShapes.get(i).getPosition().getY(), listOfIShapes.get(i).getColor(),
+                  horizontal, vertical);
+          indexToDelete = i;
+        }
+        if (this.listOfIShapes.get(i).getType().equalsIgnoreCase("rectangle")) {
+          modified = new Rectangle(listOfIShapes.get(i).getName(), listOfIShapes.get(i).getPosition().getX(),
+                  listOfIShapes.get(i).getPosition().getY(), listOfIShapes.get(i).getColor(),
+                  horizontal, vertical);
+          indexToDelete = i;
+        }
+        this.listOfIShapes.get(i).changeSize(horizontal, vertical);
       }
     }
+    this.listOfIShapes.set(indexToDelete, modified);
   }
 
   /**
@@ -210,6 +298,14 @@ public class PhotoAlbumModel implements IPhotoAlbumModel {//similar to registrat
     return strings;
   }
 
+
+  /**
+   * Returns a list of this PhotoAlbumModel's Snapshots.
+   * @return a list of Snapshot objects
+   */
+  public List<Snapshot> getListOfSnapshots() {
+    return this.listOfSnapshots;
+  }
 
   /**
    * Returns a String representation of the PhotoAlbumModel in the

@@ -36,6 +36,11 @@ public class Point2D {
     return y_coord;
   }
 
+  /**
+   * Returns a String representation of this Point2D.
+   * @return a String representation of this Point2D object
+   *         instance.
+   */
   public String toString() {
     return "(" + this.x_coord + "," + this.y_coord + ")";
   }

@@ -9,6 +9,7 @@ public class Oval extends AbstractShape {
   private double radiusX;
   private double radiusY;
   private static final String TYPE = "oval";
+  private String name;
 
 
   /**
@@ -21,12 +22,9 @@ public class Oval extends AbstractShape {
    * @param radiusY a double representing the height of this Oval
    */
   public Oval(String name, double x, double y, Color color, double radiusX, double radiusY) {
-    super(name, x, y, color);
-    if (radiusX <= 0 || radiusY <= 0) {
-      throw new IllegalArgumentException("Invalid radiusX and/or radiusY");
-    }
-    this.radiusX = radiusX;
-    this.radiusY = radiusY;
+    super(name, x, y, color, radiusX, radiusY);
+    this.name = name;
+
   }
 
   /**
@@ -40,13 +38,11 @@ public class Oval extends AbstractShape {
    */
   public Oval(String name, Point2D position, Color color, double radiusX, double radiusY)
           throws IllegalArgumentException {
-    super(name, position, color);
-    if (radiusX <= 0 || radiusY <= 0) {
-      throw new IllegalArgumentException("Invalid radiusX and/or radiusY");
-    }
+    super(name, position, color, radiusX, radiusY);
+
     this.radiusX = radiusX;
     this.radiusY = radiusY;
-
+    this.name = name;
 
   }
 
@@ -71,24 +67,27 @@ public class Oval extends AbstractShape {
     return this.radiusY;
   }
 
+
   /**
-   * Changes the size of this Oval.
-   * @param newRadiusX a double representing the Oval's new radiusX
-   *                   of this Oval
-   * @param newRadiusY a double representing the Oval's new radiusY
-   *                   of this Oval
+   * A getter method that returns this Oval's
+   * type.
+   * @return a String representing the type of this
+   *         IShape.
    */
-  @Override
-  public void changeSize(double newRadiusX, double newRadiusY)
-          throws IllegalArgumentException {
-    if (newRadiusX <= 0 || newRadiusY <= 0) {
-      throw new IllegalArgumentException("Invalid newRadiusX and/or newRadiusY");
-    }
-    this.radiusX = newRadiusX;
-    this.radiusY = newRadiusY;
+  public String getType() {
+    return this.TYPE;
   }
 
 
+  /**
+   * Getter method that returns this Oval's
+   * name.
+   * @return a String representing this Oval's
+   *         name.
+   */
+  public String getName() {
+    return this.name;
+  }
 
 
   /**
@@ -103,8 +102,8 @@ public class Oval extends AbstractShape {
     return  "Name: " + this.getName() + "\n"
             + "Type: " + this.TYPE + "\n"
             + "Center: " +  this.getPosition().toString()
-            + ", " + "X radius: " + this.radiusX + ", "
-            + "Y radius: " + this.radiusY + ", " + "Color: "
+            + ", " + "X radius: " + this.getHorizontal() + ", "
+            + "Y radius: " + this.getVertical() + ", " + "Color: "
             + this.getColor().toString();
   }
 

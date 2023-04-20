@@ -10,11 +10,12 @@ package model;
  *
  */
 public class Color {
-  private double red;
-  private double green;
-  private double blue;
-  private static final double COLOR_MIN = 0;
-  private static final double COLOR_MAX = 255;
+  //make note changed to int
+  private int red;
+  private int green;
+  private int blue;
+  private static final int COLOR_MIN = 0;
+  private static final int COLOR_MAX = 255;
 
 
   /**
@@ -25,7 +26,7 @@ public class Color {
    * @throws IllegalArgumentException if the double is less than 0 or greater
    *         than 255.
    */
-  public Color(double red, double green, double blue) throws IllegalArgumentException {
+  public Color(int red, int green, int blue) throws IllegalArgumentException {
     if (red < COLOR_MIN || red > COLOR_MAX
             || green < COLOR_MIN || green > COLOR_MAX
             || blue < COLOR_MIN || blue > COLOR_MAX) {
@@ -43,7 +44,7 @@ public class Color {
    * @return a double representing the proportion
    *         of red in this Color.
    */
-  public double getRed() {
+  public int getRed() {
     return this.red;
   }
 
@@ -53,7 +54,7 @@ public class Color {
    * @return a double representing the proportion
    *         of green in this Color.
    */
-  public double getGreen() {
+  public int getGreen() {
     return this.green;
   }
 
@@ -63,7 +64,7 @@ public class Color {
    * @return a double representing the proportion
    *         of blue in this Color.
    */
-  public double getBlue() {
+  public int getBlue() {
     return this.blue;
   }
 

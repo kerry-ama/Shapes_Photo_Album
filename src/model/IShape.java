@@ -1,5 +1,7 @@
 package model;
 
+
+
 /**
  * This interface represents an IShape. An IShape
  * is a shape that can change its color, move to
@@ -42,12 +44,18 @@ public interface IShape {
 
   /**
    * Changes the size of the IShape.
-   * @param newWidth a double representing the width
+   * @param newHorizontal a double representing the width
    *                 dimension of the IShape.
-   * @param newHeight a double representing the height/vertical
+   * @param newVertical a double representing the height/vertical
    *                  dimension of the IShape.
    */
-  void changeSize(double newWidth, double newHeight);
+  void changeSize(double newHorizontal, double newVertical);
+
+  double getHorizontal();
+
+  double getVertical();
+
+
 
   /**
    * A getter method that returns this IShape's
@@ -70,6 +78,16 @@ public interface IShape {
    * @return a String representing this IShape's name.
    */
   String getName();
+
+
+  /**
+   * A getter method that returns this IShape's
+   * type.
+   * @return a String representing this IShape's type.
+   */
+  String getType();
+
+
 
 
 

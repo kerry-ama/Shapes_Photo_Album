@@ -116,7 +116,8 @@ public class PhotoAlbumModelTest {
             = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     java.sql.Timestamp time = new Timestamp(System.currentTimeMillis());
 
-    Snapshot s1 = new Snapshot("First", list1, id, timeStamp.format(time));
+    //Snapshot s1 = new Snapshot("First", list1, id.format(time), timeStamp.format(time));
+    Snapshot s1 = new Snapshot("First", list1, id.format(time), java.time.LocalDateTime.now().toString());
 
 
     model1.addSnapshot(s1);
@@ -154,7 +155,7 @@ public class PhotoAlbumModelTest {
            +  "Timestamp: " + snap1.getTimeStamp() + "\n" + "Description: First\n"
            + "Shape Information:\n" + "Name: O\n" + "Type: oval\n"
            + "Center: (200.0,200.0), X radius: 50.0, Y radius: 100.0, "
-           + "Color: (1.0,0.0,0.0)",model1.getSnapshot(1).toString());
+           + "Color: (1,0,0)",model1.getSnapshot(1).toString());
 
   }
 
@@ -171,10 +172,12 @@ public class PhotoAlbumModelTest {
             + snap1.getTimeStamp() + "\n" +"Description: SNAP!\n" + "Shape Information:\n"
             +  "Name: R\n" + "Type: rectangle\n"
             + "Min corner: (200.0,200.0), Width: 50.0, "
-            + "Height: 100.0, Color: (1.0,0.0,0.0)\n" + "\n"
+            + "Height: 100.0, Color: (1,0,0)\n" + "\n"
             + "Name: O\n" + "Type: oval\n" + "Center: (200.0,200.0), "
-            + "X radius: 50.0, Y radius: " + "100.0, Color: (1.0,0.0,0.0)",
+            + "X radius: 50.0, Y radius: " + "100.0, Color: (1,0,0)",
             model1.getSnapshot(1).toString());
+
+
 
 
   }
@@ -192,6 +195,7 @@ public class PhotoAlbumModelTest {
   /**
    * Tests the getListOfShapes
    */
+  //need to modify
   @Test
   public void testGetListOfShapes() {
     System.out.println(model2.getListOfShapes());
@@ -209,14 +213,14 @@ public class PhotoAlbumModelTest {
 
     model2.removeShape("P");
     assertEquals("Printing Snapshots\n"
-            + "Snapshot ID: 2023-04-08T18:13:57.000057\n"
-            + "Timestamp: 08-04-2023 18:13:57\n" + "Description: snap1\n"
+            + "Snapshot ID: " + shot1.getId() + "\n"
+            + "Timestamp: " + shot1.getTimeStamp() + "\n" + "Description: snap1\n"
             + "Shape Information:\n" + "Name: O\n"
             + "Type: oval\n" + "Center: (200.0,200.0), X radius: 50.0, "
-            + "Y radius: 100.0, Color: (1.0,0.0,0.0)\n"
+            + "Y radius: 100.0, Color: (1,0,0)\n"
             + "\n" + "Name: R\n" + "Type: rectangle\n" + "Min corner: "
             + "(200.0,200.0), " + "Width: 50.0, Height: 100.0, "
-            + "Color: (1.0,0.0,0.0)",model2.toString());
+            + "Color: (1,0,0)\n\n\n",model2.toString());
 
   }
 
@@ -226,11 +230,24 @@ public class PhotoAlbumModelTest {
   @Test
   public void testRemoveShape() {
     Snapshot shot1 = model2.takeSnapshot("snap1");
+
     model2.addSnapshot(shot1);
+
     model2.removeShape("O");
-    assertEquals("Printing Snapshots\nSnapshot ID: "
-            + shot1.getId() + "\n" + "Timestamp: " + shot1.getTimeStamp()
-            + "\n" + "Description: snap1" + "\n\n\n\n", model2.toString());
+
+    Snapshot shot2 = model2.takeSnapshot("snap2");
+    model2.addSnapshot(shot2);
+    System.out.println(model2.toString());
+
+    assertEquals("Printing Snapshots\n" +
+            "Snapshot ID: " + shot1.getId() + "\n" +
+            "Timestamp: " + shot1.getTimeStamp() + "\n" +
+            "Description: snap1"+ "\n" +"Shape Information:\n"
+            + "Name: O\n" + "Type: oval\n" + "Center: (200.0,200.0), "
+            + "X radius: 50.0, Y radius: 100.0, Color: (1,0,0)\n"
+            + "\n" + "\n" + "Snapshot ID: " + shot2.getId() + "\n"
+            + "Timestamp: " + shot2.getTimeStamp() + "\n"
+            + "Description: snap2\n\n\n\n", model2.toString());
   }
 
   /**
@@ -246,7 +263,7 @@ public class PhotoAlbumModelTest {
            +  "Description: snap1\n"
            + "Shape Information:\n" + "Name: O\n" + "Type: oval\n"
            + "Center: (200.0,200.0), X radius: 50.0, "
-           + "Y radius: 100.0, Color: (1.0,0.0,0.0)\n\n\n", model2.toString());
+           + "Y radius: 100.0, Color: (1,0,0)\n\n\n", model2.toString());
     model2.moveShape("O", 0, 0);
     assertEquals("Printing Snapshots\n"
             + "Snapshot ID: " + shot1.getId() + "\n"
@@ -254,7 +271,7 @@ public class PhotoAlbumModelTest {
             +  "Description: snap1\n"
             + "Shape Information:\n" + "Name: O\n" + "Type: oval\n"
             + "Center: (0.0,0.0), X radius: 50.0, "
-            + "Y radius: 100.0, Color: (1.0,0.0,0.0)\n\n\n", model2.toString());
+            + "Y radius: 100.0, Color: (1,0,0)\n\n\n", model2.toString());
   }
 
 
@@ -281,15 +298,15 @@ public class PhotoAlbumModelTest {
             +  "Description: snap1\n"
             + "Shape Information:\n" + "Name: O\n" + "Type: oval\n"
             + "Center: (200.0,200.0), X radius: 50.0, "
-            + "Y radius: 100.0, Color: (1.0,0.0,0.0)\n\n\n", model2.toString());
-    model2.moveShape("O", 0, 0);
+            + "Y radius: 100.0, Color: (1,0,0)\n\n\n", model2.toString());
+    model2.reSizeShape("O", 10, 10);
     assertEquals("Printing Snapshots\n"
             + "Snapshot ID: " + shot1.getId() + "\n"
             + "Timestamp: " + shot1.getTimeStamp() + "\n"
             +  "Description: snap1\n"
             + "Shape Information:\n" + "Name: O\n" + "Type: oval\n"
-            + "Center: (200.0,200.0), X radius: 50.0, "
-            + "Y radius: 100.0, Color: (1.0,0.0,0.0)\n\n\n", model2.toString());
+            + "Center: (200.0,200.0), X radius: 10.0, "
+            + "Y radius: 10.0, Color: (1,0,0)\n\n\n", model2.toString());
   }
 
   @Test
@@ -326,7 +343,7 @@ public class PhotoAlbumModelTest {
             + "Name: O\n"
             + "Type: oval\n"
             + "Center: (200.0,200.0), X radius: 50.0, " +
-            "Y radius: 100.0, Color: (1.0,0.0,0.0)\n\n\n",model2.toString());
+            "Y radius: 100.0, Color: (1,0,0)\n\n\n",model2.toString());
   }
 
 

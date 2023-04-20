@@ -79,6 +79,20 @@ public class OvalTest {
   }
 
   /**
+   * Tests the move method of the Rectangle class.
+   */
+  @Test
+  public void testMove() {
+    oval1.move(100, 300);
+    oval2.move(0, 0);
+    assertEquals("(100.0,300.0)", oval1.getPosition().toString());
+    assertEquals("(0.0,0.0)", oval2.getPosition().toString());
+    assertEquals(100, oval1.getPosition().getX(), 0.001);
+    assertEquals(300, oval1.getPosition().getY(), 0.001);
+
+  }
+
+  /**
    * Tests the toString method.
    */
   @Test
