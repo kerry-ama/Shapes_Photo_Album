@@ -1,15 +1,15 @@
 # Shapes Photo Album
-1.1 Project Overview:
+# 1.1 Project Overview:
 Shapes Photo Album is an application that helps create a simple photo album from shapes. This project is a visual aid application for users to view the basic functionality and application of an object-oriented designed project that implements SOLID Principles in project architecture and incorporates best-practices of object-oriented programming including separation of concerns. This application will support the description of data we want visualized which will render the descriptive text property in a variety of ways.
 
-1.2	Motivation
+# 1.2	Motivation
 Many of us use our phones and cameras to take pictures of friends and family members, and then share those pictures in online or physical photo albums. These pictures shared in photo albums can represent a multitude of things, such as data, events, paintings, self-portraits, objects, etc. Therefore, this shapes photo album application helps to create a simple photo album of shapes that allows users to create images with shapes. 
 
-1.3 Illustrations of Application:
+# 1.3 Illustrations of Application:
 
 
 
-1.4 Detailed Project Design:
+# 1.4 Detailed Project Design:
 This application possesses design inspiration from the Model-View-Controller architecture. The design route taken for this project is synonymous to an MVVM approach such that the view communicates with the model and the controller, rather than the controller retrieving/relaying information between the model and the view. However, my design does possess a controller that contributes to the initialization of each program run.
 
 To start off, the PhotoAlbumMain class acts as a driver by calling a function that parses through every line in a text file to build the desired model. Throughout the file parsing stage, shapes and snapshots are added/modified to the model, PhotoAlbumModel object, based on the commands provided in the text file. After the cessation of the file parsing, the model is created. Subsequently, based on the command line arguments, either a graphical view object (titled SwingView) or a web view object (titled PhotoAlbumWebView) is instantiated, and the contents of the model are displayed to the user. For instance, if the view type mentioned in the command line is of type graphical, the SwingView is instantiated, otherwise if the view type signifies web, a PhotoAlbumWebView will be created. The PhotoAlbumWebView utilizes Java’s SVG library to create the desired html file. To create the html file, the PhotoAlbumWebView contains methods that create different parts of the html file. The methods utilize Java’s StringBuilder class to create the different subsections of an html file.
