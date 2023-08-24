@@ -2,7 +2,7 @@
 # 1.1 Project Overview:
 Shapes Photo Album is an application that helps create a simple photo album from shapes. This project is a visual aid application for users to view the basic functionality and application of an object-oriented designed project that implements SOLID Principles in project architecture and incorporates best-practices of object-oriented programming including separation of concerns. This application will support the description of data we want visualized which will render the descriptive text property in a variety of ways.
 
-# 1.2	Motivation
+# 1.2	Motivation:
 Many of us use our phones and cameras to take pictures of friends and family members, and then share those pictures in online or physical photo albums. These pictures shared in photo albums can represent a multitude of things, such as data, events, paintings, self-portraits, objects, etc. Therefore, this shapes photo album application helps to create a simple photo album of shapes that allows users to create images with shapes. 
 
 # 1.3 Illustrations of Application:
