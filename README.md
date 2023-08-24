@@ -6,7 +6,7 @@ Shapes Photo Album is an application that helps create a simple photo album from
 Many of us use our phones and cameras to take pictures of friends and family members, and then share those pictures in online or physical photo albums. These pictures shared in photo albums can represent a multitude of things, such as data, events, paintings, self-portraits, objects, etc. Therefore, this shapes photo album application helps to create a simple photo album of shapes that allows users to create images with shapes. 
 
 # 1.3 Illustrations of Application:
-<img src="https://github.com/kerry-ama/Shapes_Photo_Album/blob/main/Cities%20image%20select.png" width="150" height="280">
+<img src="https://github.com/kerry-ama/Shapes_Photo_Album/blob/main/Cities%20image%20select.png" width="300" height="300">
 
 
 # 1.4 Detailed Project Design:
