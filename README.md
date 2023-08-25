@@ -12,7 +12,7 @@ Many of us use our phones and cameras to take pictures of friends and family mem
 
 <img src="https://github.com/kerry-ama/Shapes_Photo_Album/blob/main/teri_wallpaper_screenshot_1.png" width="300" height="300">
 
-##Video
+
 ![Watch The Video](https://github.com/kerry-ama/Shapes_Photo_Album/blob/main/video3367785876.mp4)
 
 # 1.4 Detailed Project Design:
