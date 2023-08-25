@@ -13,7 +13,7 @@ Many of us use our phones and cameras to take pictures of friends and family mem
 <img src="https://github.com/kerry-ama/Shapes_Photo_Album/blob/main/teri_wallpaper_screenshot_1.png" width="300" height="300">
 
 ##Video
-![Watch The Video](https://github.com/kerry-ama/Shapes_Photo_Album/video1367785876.mp4)
+![Watch The Video](https://github.com/kerry-ama/Shapes_Photo_Album/video3367785876.mp4)
 
 # 1.4 Detailed Project Design:
 This application possesses design inspiration from the Model-View-Controller architecture. The design route taken for this project is synonymous to an MVVM approach such that the view communicates with the model and the controller, rather than the controller retrieving/relaying information between the model and the view. However, my design does possess a controller that contributes to the initialization of each program run.
